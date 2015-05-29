@@ -1,6 +1,7 @@
 # By default Volt generates this controller for your Main component
 module Main
   class MainController < Volt::ModelController
+    model :store
     def index
       # Add code for when the index view is loaded
     end
@@ -22,6 +23,14 @@ module Main
     # at the first part of the url against the href attribute.
     def active_tab?
       url.path.split('/')[1] == attrs.href.split('/')[1]
+    end
+
+    def add_todo
+      page._todos << { name: page._new_todo }
+      page._new_todo = ''
+    end
+    def current_todo
+      page._todos[(params._index || 0).to_i]
     end
   end
 end
