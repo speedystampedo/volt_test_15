@@ -46,7 +46,7 @@ Volt.configure do |config|
   #####################
   # If you are not running behind something like nginx in production, you can
   # have rack deflate all files.
-  # config.deflate = true
+  config.deflate = true
 
   #######################
   # Public configurations
@@ -61,10 +61,10 @@ Volt.configure do |config|
   # Compression Options
   #####################
   # Disable or enable css/js compression.  Default is to only run in production.
-  # if Volt.env.production?
-  #   config.compress_javascript = true
-  #   config.compress_css        = true
-  # end
+  if Volt.env.production?
+     config.compress_javascript = true
+     config.compress_css        = true
+  end
 
   ################
   # Mailer options
